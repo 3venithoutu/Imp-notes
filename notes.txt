@@ -1,0 +1,221 @@
+Sample Project:
+
+\\10.5.5.230\From_Anyone _in_TechM\Yukti
+					OR
+https://github.com/yukti-12/Angular4-startup.git
+
+Docs of Angular 4:
+	https://angular.io/
+	
+Pre-requisites:
+a.	HTML5 / CSS 3
+b.	Javascript
+c.	Typescript (https://www.typescriptlang.org/docs/home.html). 
+	(Superset of JS + OOPS)
+d.	Online Editor available for Typescript (https://www.typescriptlang.org/play/)
+
+Installable s:
+1. Installed Node JS version 8.9 (https://nodejs.org/en/). This version is 	 
+   compatible with Windows 10.
+2. Installed Visual Studio Code Editor version 1.11 (
+			https://code.visualstudio.com/download)
+3. Google Chrome version 50
+
+Node : Server side Javascript
+Launch a lite web server
+NPM : Node package manager: get the runtime dependencies....for the angular project
+
+Angular 4 : ng 4. Mobile + Web development
+Front end development (client Framework)
+SPA : Single Page Application
+***************************************************************************
+
+	1. Components : view component => tied to UI
+			class (properties + methods) + View (HTML=>Template) + Decorator (Annotation[metadata])
+			
+			a. component.ts => class 
+			b. component.html => HTML (VIEW)
+			c. component.css => styling for the component
+			d. component.spec.ts => test case file
+			
+			*] selector => html element using which a component would be inserted and rendered.
+			
+			Bindings:
+				1. One - way Bindings => {{}} (interpolation) / [] (associating a property)
+					Event Binding : events ()
+				2. Two - way Bindings : [(ngModel)]
+					class properties <=> UI (HTML / VIEW) are in sync
+					** ngModel is a part of the FormsModule **
+				
+	2. Directives : Extend the HTML. to make it more responsive and dynamic
+			structural directives [*]: ngFor, ngIf, ngElse, ngSwitch
+				DOM Manipulation
+				
+			custom directives: 
+			attribute directives : <img [src]='' />
+			
+	3. Services : 
+				Helper classes. non-UI logic. Singleton (one instance)
+				Component <-> Service
+					In 2 ways :
+						a) Global Service => Module => Available to all the components within that module.So that data could be shared
+						b) Local Service => Available for the component. And also its child components.
+						
+				@Injectable() => Using ng's pre-defined services and injecting in your custom service (eg: HTTP)
+				
+				Web -api (HTTP) (Async calling)
+					Component -> Post Service -> HTTP call (Request) -> WEB API
+					Component	<- Post Service	<-	HTTP  (Response) <-   DATA 	(result)
+												OBSERVABLES
+					component should subscribe to the service
+					
+				** Observables **					OBSERVABLES
+				
+					Sequence / Array of events that arrive in the future.
+					
+					RxJS : Reactive Extensions for Javascript [external JS library]
+					
+	4. Routing
+			Route to different components
+			@angular/router
+			
+			SPA : view changes w/o page refreshes
+			
+			URL mapping => Component
+			
+			1. Create mappings [Routes: URL mapping => Component]
+			2. Placeholder to display the components
+			3. Create links
+			
+			http://localhost:3345/course
+			http://localhost:3345/person
+	
+	5. Pipes : format the data : presentation: uppercase , lowercase, currency, date
+		
+		Custom Pipes: 
+		
+		PipeTransform<I>
+			transform(value,arg?):RT {
+			
+			}
+	
+	6. Form Validations
+		a. Template Driven approach [FormsModule]
+		
+			Directives
+			ngForm => access to the entire ng Form
+			ngModel => access to the individual form elements
+			
+			ng-touched : i/p control is visited
+			ng-untouched : i/p control is not visited
+			
+			ng-dirty : i/p control is modified
+			ng-pristine : i/p control is new or unchanged
+			
+			ng-valid : i/p control value is valid
+			ng-invalid : i/p control value is invalid
+			
+		b. Model Driven - Reactive approach [ReactiveFormsModule]
+			
+			FormBuilder = Build the form
+			FormGroup = Group the form elements / Form Controls
+			Validators = Validations
+		
+	Modules: Ecma Script is a Javascript std (ECMA 6 / ECMA 2015)
+	Reusable / managebale pieces of code./ package
+	
+	** One Root module => connected to other modules **
+	
+	Decorator: meta-data information given to the angular compiler as how to instantiate / configure the component.
+	
+		** Angular lifecycle **
+		
+		Managed by the NG framework. 
+		Create a component
+		Render the component
+		Check data associated with the component
+		Destroy the component
+		
+		Life cycle hooks : Developer the ability to intervene in the life cycle of a component.
+		
+		OnInit <I>  => ngOnInit()
+		OnChanges <I> => ngOnChanges() [parent and child , parent will change data and pass to the child]
+		OnDestroy <I> => ngOnDestroy()
+		
+	configure the module
+	
+	configure the services
+	
+	configure the directives
+	
+	node_modules: dependencies for the ng project [one time activity]
+	
+	Web pack : js biuld automation tool
+	
+	a. inline.bundle.js => web pack runtime to load the modules and put everything together
+	
+	b. main.bundle.js => Application source code
+	
+	c. polyfills.bundle.js => bridge the gap for browsers
+	d. styles.bundle.js => css / style file for application
+	e. vendor.bundle.js => Angular and vendor dependencies
+
+	** Development is done in Typescript (.ts) => Javascript by the typescript compiler ** [tsc]. Javascript code is rendered in the browser. (main.bundle.js)
+	
+	
+****************************************************************************
+Angular CLI: [automate the process of ng development]
+	a) install angular cli:
+		npm install -g @angular/cli@1.4.8
+	
+	b) check version:
+		ng -v
+		
+    c) npm install --save
+		(install the dependencies in the node_modules folder)
+	
+	d)To generate a project with dependencies
+		ng new my-app
+		
+	e) To generate a project without dependencies	
+		ng new my-app --skip-install --skip-testcases
+	
+	f) 	To get more dependencies
+		npm install bootstrap@4.0.0 --save
+		npm install express@version --save
+		 [saves to package.json]
+		
+	g) To execute / run:
+		ng serve
+			
+			IF no angular / cli:
+			
+		npm start
+		
+	h) Different port number:
+	
+		ng serve -p 2334
+		npm start -p 2334
+		
+	i) Generate an interface:
+		ng g i address
+		
+	j) Generate a class
+		ng g cl address
+	
+	k) 	Generate a component
+		ng g c sample
+		
+	l) Generate a service
+		ng g s recepie
+		
+	m) generate a pipe
+		ng g p pipeName
+		
+	n) Generate module
+		ng g m routing
+	
+	
+		
+	
+
